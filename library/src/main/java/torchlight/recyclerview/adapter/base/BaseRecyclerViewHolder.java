@@ -13,19 +13,20 @@ import android.view.ViewGroup;
 
 public abstract class BaseRecyclerViewHolder<T1 extends ViewDataBinding, T2> extends RecyclerView.ViewHolder{
 
-    protected T1 mItemViewDataBinding;
+    private final T1 mItemViewDataBinding;
 
-    public BaseRecyclerViewHolder(T1 itemViewDataBinding){
+    protected BaseRecyclerViewHolder(T1 itemViewDataBinding){
         super(itemViewDataBinding.getRoot());
         mItemViewDataBinding = itemViewDataBinding;
     }
 
-    public BaseRecyclerViewHolder(ViewGroup parent, @LayoutRes int layoutId){
+    @SuppressWarnings("unchecked")
+    protected BaseRecyclerViewHolder(ViewGroup parent, @LayoutRes int layoutId){
         this((T1) DataBindingUtil.bind(LayoutInflater.from(parent.getContext())
                 .inflate(layoutId, parent, false)));
     }
 
-    public T1 getItemViewDataBinding(){
+    protected T1 getItemViewDataBinding(){
         return mItemViewDataBinding;
     }
 

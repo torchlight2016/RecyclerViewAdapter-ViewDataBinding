@@ -5,8 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -16,11 +14,11 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<T>
         extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
 
-    private List<T> mItems;
+    protected final List<T> mItems;
 
-    public BaseRecyclerViewAdapter() { mItems = new ArrayList<>(); }
+    protected BaseRecyclerViewAdapter() { mItems = new ArrayList<>(); }
 
-    public BaseRecyclerViewAdapter(List<T> items) {
+    protected BaseRecyclerViewAdapter(List<T> items) {
         mItems = items;
     }
 
@@ -74,30 +72,20 @@ public abstract class BaseRecyclerViewAdapter<T>
         notifyItemRangeRemoved(0, getItemCount());
     }
 
-    @UiThread
-    public void sort(Comparator<? super T> comparator) {
-        Collections.sort(mItems, comparator);
-        notifyItemRangeChanged(0, getItemCount());
-    }
-
     @Override
     public int getItemCount() {
         return mItems.size();
     }
 
-    public T getItem(int position) {
+    protected T getItem(int position) {
         return mItems.get(position);
-    }
-
-    protected List<T> getItems(){
-        return mItems;
     }
 
     public int getPosition(final T item) {
         return mItems.indexOf(item);
     }
 
-
+    @SuppressWarnings("unchecked")
     @Override
     public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
         holder.onBindItemView(getItem(position));
@@ -108,10 +96,5 @@ public abstract class BaseRecyclerViewAdapter<T>
 
     @Override
     public abstract int getItemViewType(int position);
-
-
-
-
-
 
 }

@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     public List<Item2> createItem2List(){
         List<Item2> items = new ArrayList<>();
-
         for(int i = 0 ; i < 5 ; i++)
             items.add(new Item2("Title" + i , "Content " + i));
         return items;

@@ -14,6 +14,7 @@ import torchlight.recyclerview.adapter.base.BaseRecyclerViewHolder;
  * Created by torchlight on 2016. 12. 6..
  */
 
+
 public abstract class SingleItemAdapter<T1 extends ViewDataBinding, T2> extends BaseRecyclerViewAdapter<T2> {
 
     @Override
@@ -34,7 +35,7 @@ public abstract class SingleItemAdapter<T1 extends ViewDataBinding, T2> extends 
 
     @UiThread
     public void sort(Comparator<? super T2> comparator) {
-        Collections.sort(getItems(), comparator);
+        Collections.sort(mItems, comparator);
         notifyItemRangeChanged(0, getItemCount());
     }
 

@@ -7,7 +7,7 @@ import torchlight.recyclerview.adapter.base.BaseRecyclerViewAdapter;
  * Created by torchlight on 2016. 12. 6..
  */
 
-public abstract class MultiItemAdapter<T extends Object> extends BaseRecyclerViewAdapter<T> {
+public abstract class MultiItemAdapter extends BaseRecyclerViewAdapter<Object> {
 
     @Override
     public int getItemViewType(int position) {
